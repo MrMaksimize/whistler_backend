@@ -13,11 +13,8 @@ var sendMessages = function(eventInfo) {
     var twilio_auth_token  = process.env.TWILIO_AUTH_TOKEN;
     var twilio_num    = process.env.MY_PHONE_NUMBER;
     var client             = new twilio.RestClient(twilio_account_sid, twilio_auth_token);
-    console.log(receiverNumbers);
     for (var i = 0; i < receiverNumbers.length; i++) {
         console.log("Send to " + receiverNumbers[i]);
-        console.log(eventInfo.body);
-        console.log(eventInfo.mediaURL);
         client.messages.create({
             body: eventInfo.body,
             to: receiverNumbers[i],  // Text this number
