@@ -8,6 +8,7 @@ var moment = require('moment');
 var receiverNumbers = require('./recipients.json');
 
 
+
 var sendMessages = function(eventInfo) {
     var twilio_account_sid = process.env.TWILIO_ACCOUNT_SID;
     var twilio_auth_token  = process.env.TWILIO_AUTH_TOKEN;
@@ -23,7 +24,12 @@ var sendMessages = function(eventInfo) {
         }, function(err, message) {
             if(err) {
                 console.error(err.message);
+                //done(err, 'failed to send message to ' + receiverNumbers[i]);
             }
+            /*else {
+                done(err, 'message successfully sent to ' + receiverNumbers[i]);
+            }*/
+
         });
     }
 }
@@ -44,7 +50,16 @@ var sendMessages = function(eventInfo) {
  * For more documentation, follow the link below.
  * http://docs.aws.amazon.com/iot/latest/developerguide/iot-lambda-rule.html
  */
-exports.handler = function(event, context) {
+exports.handler = (event, context, callback) => {
+  console.log('Received event:', JSON.stringify(event, null, 2));
+
+  const done = (err, res) => callback(null, {
+      statusCode: err ? '400' : '200',
+      body: err ? err.message : JSON.stringify(res),
+      headers: {
+          'Content-Type': 'application/json',
+      },
+  });
 
   var eventTime = moment().format("MMM Do YYYY");
   var eventInfo = {
@@ -75,6 +90,13 @@ exports.handler = function(event, context) {
       eventInfo.mediaURL = 'https://api.mapbox.com/v4/mapbox.streets-satellite/pin-l-danger+ff0000(-116.999824,33.094)/'+ eventInfo.latlng +',17/300x300@2x.png?access_token=pk.eyJ1IjoibXJtYWtzaW1pemUiLCJhIjoiRlRwLWwyVSJ9.--Y4RdEJ_5ZuJjSUkx34vQ'
   }
 
-  sendMessages(eventInfo)
 
-};
+
+  //sendMessages(eventInfo)
+
+
+
+  //done(null, "done");
+
+
+}
