@@ -9,29 +9,26 @@ var receiverNumbers = require('./recipients.json');
 
 
 
-var sendMessages = function(eventInfo) {
+var sendMessages = function(eventInfo, done) {
     var twilio_account_sid = process.env.TWILIO_ACCOUNT_SID;
     var twilio_auth_token  = process.env.TWILIO_AUTH_TOKEN;
     var twilio_num    = process.env.MY_PHONE_NUMBER;
     var client             = new twilio.RestClient(twilio_account_sid, twilio_auth_token);
+    var smsBatch = [];
     for (var i = 0; i < receiverNumbers.length; i++) {
         console.log("Send to " + receiverNumbers[i]);
-        client.messages.create({
+        var message = client.messages.create({
             body: eventInfo.body,
             to: receiverNumbers[i],  // Text this number
             from: twilio_num, // From a valid Twilio number
             mediaUrl: eventInfo.mediaURL
-        }, function(err, message) {
-            if(err) {
-                console.error(err.message);
-                //done(err, 'failed to send message to ' + receiverNumbers[i]);
-            }
-            /*else {
-                done(err, 'message successfully sent to ' + receiverNumbers[i]);
-            }*/
-
         });
+        smsBatch.push(message);
     }
+    Promise.all(smsBatch).then(function(){
+        console.log('msg sent');
+        done(null, 'msges sent');
+    });
 }
 
 
@@ -92,11 +89,7 @@ exports.handler = (event, context, callback) => {
 
 
 
-  //sendMessages(eventInfo)
-
-
-
-  //done(null, "done");
+  sendMessages(eventInfo, done);
 
 
 }
