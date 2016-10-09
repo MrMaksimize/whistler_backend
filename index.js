@@ -58,7 +58,7 @@ exports.handler = function(event, context) {
   if (event.serialNumber) {
       eventInfo.deviceName = event.serialNumber;
       eventInfo.latlng = "-116.999824,33.094";
-      eventInfo.mediaURL = "https://api.mapbox.com/v4/mapbox.streets-satellite/" + eventInfo.latlng + ",17/300x300@2x.png?access_token=pk.eyJ1IjoibXJtYWtzaW1pemUiLCJhIjoiRlRwLWwyVSJ9.--Y4RdEJ_5ZuJjSUkx34vQi";
+      eventInfo.mediaURL = "https://api.mapbox.com/v4/mapbox.streets-satellite/" + eventInfo.latlng + ",17/300x300@2x.png?access_token=pk.eyJ1IjoibXJtYWtzaW1pemUiLCJhIjoiRlRwLWwyVSJ9.--Y4RdEJ_5ZuJjSUkx34vQ";
 
     switch(event.clickType) {
       case "DOUBLE":

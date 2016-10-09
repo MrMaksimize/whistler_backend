@@ -1,0 +1,47 @@
+{
+  "resource": "/onDetectSound",
+  "path": "/onDetectSound",
+  "httpMethod": "POST",
+  "headers": {
+    "CloudFront-Forwarded-Proto": "https",
+    "CloudFront-Is-Desktop-Viewer": "true",
+    "CloudFront-Is-Mobile-Viewer": "false",
+    "CloudFront-Is-SmartTV-Viewer": "false",
+    "CloudFront-Is-Tablet-Viewer": "false",
+    "CloudFront-Viewer-Country": "US",
+    "content-type": "application/x-www-form-urlencoded",
+    "Host": "50y0ebhrq6.execute-api.us-west-2.amazonaws.com",
+    "User-Agent": "ParticleBot/1.1 (https://docs.particle.io/webhooks)",
+    "Via": "1.1 1855dddbad97610ed28373576e7b4dbf.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Id": "eJjmXqEGuDrY_cy_KOy4aI3V21fqo38XyWQVCzNjk6TvQww3CDyvZw==",
+    "X-Forwarded-For": "54.235.35.22, 54.182.230.97",
+    "X-Forwarded-Port": "443",
+    "X-Forwarded-Proto": "https"
+  },
+  "queryStringParameters": null,
+  "pathParameters": null,
+  "stageVariables": null,
+  "requestContext": {
+    "accountId": "525672272488",
+    "resourceId": "l6901j",
+    "stage": "prod",
+    "requestId": "a5ce549b-8dd2-11e6-bd7a-75c8db958272",
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "accountId": null,
+      "cognitoIdentityId": null,
+      "caller": null,
+      "apiKey": null,
+      "sourceIp": "54.235.35.22",
+      "cognitoAuthenticationType": null,
+      "cognitoAuthenticationProvider": null,
+      "userArn": null,
+      "userAgent": "ParticleBot/1.1 (https://docs.particle.io/webhooks)",
+      "user": null
+    },
+    "resourcePath": "/onDetectSound",
+    "httpMethod": "POST",
+    "apiId": "50y0ebhrq6"
+  },
+  "body": "event=soundDetected&data=calm-hobbit&published_at=2016-10-09T03%3A44%3A13.906Z&coreid=37002b001951343334363036"
+}
