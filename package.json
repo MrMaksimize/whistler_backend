@@ -14,7 +14,9 @@
   },
   "homepage": "https://github.com/rebelmail/node-lambda-template",
   "dependencies": {
+    "moment": "^2.15.1",
     "node-lambda": "0.1.5",
+    "querystring": "^0.2.0",
     "twilio": "^2.11.0"
   },
   "scripts": {

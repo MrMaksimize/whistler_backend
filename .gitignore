@@ -39,3 +39,4 @@ event.json
 deploy.env
 event.json
 environment.js
+recipients.json
